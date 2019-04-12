@@ -10,9 +10,18 @@ class SmurfList extends React.Component {
     }
 
     render() {
+        if (this.props.smurfs.length === 0) {
+            return (
+            <div>
+                <p>Smurfs on the way...</p>
+                <p>Uh oh, something's wrong with the smurf servers: </p>
+                <p>{this.props.error}</p>
+            </div>
+            )
+        }
+
         return(
         <div className="container">
-            <h1>Smurf List</h1>
             <div className="smurf-list">
                 {this.props.smurfs.map(smurf =>
                     <div className="smurf-card">
@@ -28,9 +37,10 @@ class SmurfList extends React.Component {
 }
 
 const mapStateToProps= state => {
-    console.log(state.smurfs)
+    console.log(state)
     return {
-        smurfs: state.smurfs
+        smurfs: state.smurfs,
+        // error: state.error
     }
 }
 
