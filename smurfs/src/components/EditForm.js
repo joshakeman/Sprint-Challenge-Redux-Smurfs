@@ -8,7 +8,11 @@ class EditForm extends React.Component {
         name: '',
         age: '',
         height: '',
-        currentSmurf: null
+        currentSmurf: {
+            name:'',
+            age:'',
+            height:''
+        }
     }
     
     componentDidMount(){
@@ -61,19 +65,19 @@ editSmurf = e => {
             <form onSubmit={this.editSmurf}>
                 <input 
                 name="name"
-                // value={this.state.currentSmurf.name}
+                value={this.state.currentSmurf.name}
                 placeholder="name"
                 onChange={this.handleChanges}
                 />
                 <input 
                 name="age"
-                // value={this.state.currentSmurf.age}
+                value={this.state.currentSmurf.age}
                 placeholder="age"
                 onChange={this.handleChanges}
                 />
                 <input 
                 name="height"
-                // value={this.state.currentSmurf.height}
+                value={this.state.currentSmurf.height}
                 placeholder="height"
                 onChange={this.handleChanges}
                 />

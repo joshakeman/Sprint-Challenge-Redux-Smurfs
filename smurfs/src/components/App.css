@@ -29,7 +29,7 @@ nav p {
 button {
   background: #88CCFF;
   padding: 10px 20px;
-  border-radius: 50px;
+  border-radius: 50%;
   border: 1px solid rgb(45, 163, 253);
   margin: 0 10px;
   color: white;
@@ -62,3 +62,12 @@ button:hover {
   padding: 10px 20px;
 }
 
+.red-btn {
+  background: rgb(248, 150, 150);
+  border: 1px solid rgb(192, 53, 53);
+
+}
+
+.red-btn:hover {
+  background: rgb(192, 53, 53);
+}
