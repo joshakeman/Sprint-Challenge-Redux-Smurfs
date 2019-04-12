@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addSmurf } from '../actions'
 
 class Form extends React.Component {
     state = {
@@ -17,7 +18,14 @@ handleChanges = e => {
 
 addSmurf = e => {
     e.preventDefault()
-    this.props.addSmurf()
+
+    const newSmurf = {
+        name: this.state.name,
+        age: this.state.age,
+        height: this.state.height
+    }
+
+    this.props.addSmurf(newSmurf)
 }
     render() {
         return (
@@ -46,4 +54,4 @@ addSmurf = e => {
     }
 }
 
-export default connect(null, {  })(Form)
+export default connect(null, { addSmurf })(Form)

@@ -5,6 +5,8 @@ import { FETCHING_START } from '../actions'
 import { FETCHING_SUCCESS }from '../actions'
 import { FETCHING_FAILURE } from '../actions'
 
+import { ADD_SMURF_START, ADD_SMURF_SUCCESS, ADD_SMURF_FAILURE } from '../actions'
+
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
@@ -35,8 +37,6 @@ const reducer = (state = initialState, action) => {
         error: '',
       }
     case FETCHING_SUCCESS:
-      console.log(action)
-      console.log(action.payload)
       return {
         ...state,
         fetchingSmurfs: false,
@@ -44,11 +44,24 @@ const reducer = (state = initialState, action) => {
         smurfs: action.payload.data
       }
     case FETCHING_FAILURE:
-      console.log(action.payload)
       return {
         ...state,
         error: action.payload,
         isFetching: false
+      }
+    case ADD_SMURF_START: 
+      return {
+        ...state,
+        addingSmurf: true,
+        error: ''
+      }
+    case ADD_SMURF_SUCCESS:
+      console.log(action.payload)
+      return {
+        ...state,
+        addingSmurf: false,
+        error: '',
+        smurfs: action.payload.data
       }
     default:
     return state
