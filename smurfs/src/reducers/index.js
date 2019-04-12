@@ -7,6 +7,8 @@ import { FETCHING_FAILURE } from '../actions'
 
 import { ADD_SMURF_START, ADD_SMURF_SUCCESS, ADD_SMURF_FAILURE } from '../actions'
 
+import { EDIT_SMURF_START, EDIT_SMURF_SUCCESS, EDIT_SMURF_FAILURE} from '../actions'
+
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
 const initialState = {
@@ -60,6 +62,23 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         addingSmurf: false,
+        error: '',
+        smurfs: action.payload.data
+      }
+
+      case EDIT_SMURF_START: 
+      console.log(action)
+      return {
+        ...state,
+        updatingSmurf: true,
+        error: ''
+      }
+
+      case EDIT_SMURF_SUCCESS:
+      console.log(action.payload)
+      return {
+        ...state,
+        updatingSmurf: false,
         error: '',
         smurfs: action.payload.data
       }

@@ -24,6 +24,10 @@ export const ADD_SMURF_START = 'ADD_SMURF_START'
 export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS"
 export const ADD_SMURF_FAILURE = "ADD_SMURF_FAILURE"
 
+export const EDIT_SMURF_START = 'EDIT_SMURF_START'
+export const EDIT_SMURF_SUCCESS = "EDIT_SMURF_SUCCESS"
+export const EDIT_SMURF_FAILURE = "EDIT_SMURF_FAILURE"
+
 export const getSmurfs = () => dispatch => {
   dispatch({ type: FETCHING_START })
 
@@ -59,6 +63,26 @@ export const addSmurf = smurf => dispatch => {
     .catch(err => {
       dispatch({
         type: ADD_SMURF_FAILURE,
+        payload: err
+      })
+    })
+}
+
+export const editSmurf = (smurfId, smurf) => dispatch => {
+  console.log('actioning')
+  dispatch ({ type: EDIT_SMURF_START })
+
+  axios 
+    .post(`http://localhost:3333/smurfs/${smurfId}`, smurf)
+    .then(res => {
+      dispatch ({
+        type: EDIT_SMURF_SUCCESS,
+        payload: res
+      })
+    })
+    .catch(err => {
+      dispatch({
+        type: EDIT_SMURF_FAILURE,
         payload: err
       })
     })

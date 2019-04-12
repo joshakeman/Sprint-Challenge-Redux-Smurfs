@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+
 
 import { getSmurfs } from '../actions'
+
+import Smurf from './Smurf'
+import EditForm from './EditForm'
 
 class SmurfList extends React.Component {
 
@@ -21,17 +26,18 @@ class SmurfList extends React.Component {
         }
 
         return(
+        <Router>
         <div className="container">
             <div className="smurf-list">
                 {this.props.smurfs.map(smurf =>
                     <div key={smurf.name} className="smurf-card">
-                        <h2>{smurf.name}</h2>
-                        <p>Age: {smurf.age}</p>
-                        <p>Height: {smurf.height}</p>
+                       <Smurf smurf={smurf} />
                     </div>
                 )}
             </div>
+            <Route path="/edit/:smurfId" render={props => <EditForm smurfs={this.props.smurfs} {...props}/>}/>
         </div>
+        </Router>         
         )
     }
 }

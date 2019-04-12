@@ -1,14 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addSmurf } from '../actions'
+import { addSmurf, editSmurf } from '../actions'
 
-class Form extends React.Component {
+
+class EditForm extends React.Component {
     state = {
         name: '',
         age: '',
-        height: ''
+        height: '',
+        currentSmurf: null
     }
     
+    componentDidMount(){
+        const smurf = this.props.smurfs.find(smurf => `${smurf.id}` === this.props.match.params.smurfId)
+        this.setState({
+            currentSmurf: smurf
+        })
+    }
 
 handleChanges = e => {
     this.setState ({
@@ -33,31 +41,46 @@ addSmurf = e => {
         height: ''
     })
 }
+
+editSmurf = e => {
+    e.preventDefault()
+    const smurf = this.props.smurfs.find(smurf => `${smurf.id}` === this.props.match.params.smurfId)
+    console.log(smurf)
+    const newSmurf = {
+        name: smurf.name,
+        age: smurf.age,
+        height: smurf.height
+    }
+    this.props.editSmurf(smurf.id, newSmurf)
+}
+
     render() {
         return (
-            <form onSubmit={this.addSmurf}>
+            <div className="return-form">
+            <form onSubmit={this.editSmurf}>
                 <input 
                 name="name"
-                value={this.state.name}
+                // value={this.state.currentSmurf.name}
                 placeholder="name"
                 onChange={this.handleChanges}
                 />
                 <input 
                 name="age"
-                value={this.state.age}
+                // value={this.state.currentSmurf.age}
                 placeholder="age"
                 onChange={this.handleChanges}
                 />
                 <input 
                 name="height"
-                value={this.state.height}
+                // value={this.state.currentSmurf.height}
                 placeholder="height"
                 onChange={this.handleChanges}
                 />
-                <button>Add</button>
+                <button>Edit</button>
             </form>
+            </div>
         )
     }
 }
 
-export default connect(null, { addSmurf })(Form)
+export default connect(null, { editSmurf })(EditForm)

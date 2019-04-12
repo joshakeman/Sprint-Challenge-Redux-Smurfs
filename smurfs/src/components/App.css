@@ -56,3 +56,9 @@ button:hover {
   border-radius: 50%;
 }
 
+.return-form {
+  background: white;
+  opacity: 0.9;
+  padding: 10px 20px;
+}
+
