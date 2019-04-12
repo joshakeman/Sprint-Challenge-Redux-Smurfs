@@ -31,7 +31,7 @@ class SmurfList extends React.Component {
             <div className="smurf-list">
                 {this.props.smurfs.map(smurf =>
                     <div key={smurf.name} className="smurf-card">
-                       <Smurf smurf={smurf} />
+                       <Route path="/" render={props => <Smurf {...props} smurf={smurf} />}/>
                     </div>
                 )}
             </div>

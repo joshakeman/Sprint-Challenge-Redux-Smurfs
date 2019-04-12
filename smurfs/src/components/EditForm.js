@@ -18,7 +18,10 @@ class EditForm extends React.Component {
     componentDidMount(){
         const smurf = this.props.smurfs.find(smurf => `${smurf.id}` === this.props.match.params.smurfId)
         this.setState({
-            currentSmurf: smurf
+            currentSmurf: smurf,
+            name: smurf.name,
+            age: smurf.age,
+            height: smurf.height
         })
     }
 
@@ -55,6 +58,7 @@ editSmurf = e => {
         age: smurf.age,
         height: smurf.height
     }
+
     this.props.editSmurf(smurf.id, newSmurf)
     this.props.history.push("/")
 }
@@ -65,19 +69,19 @@ editSmurf = e => {
             <form onSubmit={this.editSmurf}>
                 <input 
                 name="name"
-                value={this.state.currentSmurf.name}
+                value={this.state.name}
                 placeholder="name"
                 onChange={this.handleChanges}
                 />
                 <input 
                 name="age"
-                value={this.state.currentSmurf.age}
+                value={this.state.age}
                 placeholder="age"
                 onChange={this.handleChanges}
                 />
                 <input 
                 name="height"
-                value={this.state.currentSmurf.height}
+                value={this.state.height}
                 placeholder="height"
                 onChange={this.handleChanges}
                 />
