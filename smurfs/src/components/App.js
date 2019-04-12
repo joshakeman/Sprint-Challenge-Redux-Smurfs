@@ -15,7 +15,7 @@ class App extends Component {
       <div className="App">
       <nav>
         <div>
-          <p>Add a smurf</p>
+          <p>Add a new smurf !</p>
         </div>
         <Form />
       </nav>
