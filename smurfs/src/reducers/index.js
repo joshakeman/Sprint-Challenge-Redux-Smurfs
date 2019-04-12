@@ -1,9 +1,9 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import FETCHING_START from '../actions'
-import FETCHING_SUCCESS from '../actions'
-import FETCHING_FAILURE from '../actions'
+import { FETCHING_START } from '../actions'
+import { FETCHING_SUCCESS }from '../actions'
+import { FETCHING_FAILURE } from '../actions'
 
 
 //  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -27,7 +27,29 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-
+    case FETCHING_START:
+    console.log(action)
+      return {
+        ...state,
+        fetchingSmurfs: true,
+        error: '',
+      }
+    case FETCHING_SUCCESS:
+      console.log(action)
+      console.log(action.payload)
+      return {
+        ...state,
+        fetchingSmurfs: false,
+        error: '',
+        smurfs: action.payload.data
+      }
+    case FETCHING_FAILURE:
+      console.log(action.payload)
+      return {
+        ...state,
+        error: action.payload,
+        isFetching: false
+      }
     default:
     return state
 
