@@ -52,6 +52,7 @@ editSmurf = e => {
         height: smurf.height
     }
     this.props.editSmurf(smurf.id, newSmurf)
+    this.props.history.push("/")
 }
 
     render() {
@@ -76,7 +77,7 @@ editSmurf = e => {
                 placeholder="height"
                 onChange={this.handleChanges}
                 />
-                <button>Edit</button>
+                <button>Update Smurf</button>
             </form>
             </div>
         )
