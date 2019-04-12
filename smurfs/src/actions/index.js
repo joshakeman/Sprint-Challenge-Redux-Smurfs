@@ -73,7 +73,7 @@ export const editSmurf = (smurfId, smurf) => dispatch => {
   dispatch ({ type: EDIT_SMURF_START })
 
   axios 
-    .post(`http://localhost:3333/smurfs/${smurfId}`, smurf)
+    .put(`http://localhost:3333/smurfs/${smurfId}`, smurf)
     .then(res => {
       dispatch ({
         type: EDIT_SMURF_SUCCESS,
